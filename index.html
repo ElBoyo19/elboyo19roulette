@@ -1801,6 +1801,13 @@ body::after {
 .survivor-overlay .survivor-controls-wrap{display:none}
 .survivor-overlay .survivor-sub{display:none}
 .survivor-overlay .survivor-config{display:none}
+.survivor-overlay .survivor-overlay-toggle{
+    display:inline-block;
+    margin-top:10px;
+    opacity:.65;
+    font-size:9px;
+    padding:7px 10px;
+}
 @media(max-width:700px){
     #survivorChallenge{left:12px;bottom:12px;width:calc(100% - 24px)}
 }
@@ -2083,10 +2090,11 @@ body::after {
             <button id="survivorMinus" class="survivor-control" type="button">−1</button>
             <button id="survivorReset" class="survivor-control" type="button">🔄 RESET</button>
         </div>
-        <div class="survivor-buttons" style="margin-top:6px">
-            <button id="survivorOverlay" class="survivor-control" type="button">🎥 MODO OVERLAY</button>
-        </div>
     </div>
+
+    <button id="survivorOverlay" class="survivor-control survivor-overlay-toggle" type="button">
+        🎥 MODO OVERLAY
+    </button>
 
     <div class="survivor-message" id="survivorMessage" aria-live="polite"></div>
     </section>
@@ -3414,10 +3422,13 @@ drawWheel();
         wins = 0; render();
     });
     document.getElementById("survivorOverlay").addEventListener("click", function(){
-        document.body.classList.toggle("survivor-overlay");
-        this.textContent = document.body.classList.contains("survivor-overlay")
+        const active = document.body.classList.toggle("survivor-overlay");
+        this.textContent = active
             ? "⚙️ MOSTRAR CONTROLES"
             : "🎥 MODO OVERLAY";
+        this.setAttribute("aria-label", active
+            ? "Mostrar controles"
+            : "Activar modo overlay");
     });
 
     render();
