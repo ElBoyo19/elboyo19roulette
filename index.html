@@ -1758,12 +1758,207 @@ body::after {
             )
             scale(0);
     }
-}</style>
+}
+
+/* =========================================================
+   ELBOYO19 — SURVIVOR TROPHY CHALLENGE
+   ========================================================= */
+#survivorChallenge{
+    position:fixed;
+    left:28px;
+    bottom:28px;
+    width:360px;
+    padding:18px 18px 16px;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:16px;
+    background:linear-gradient(145deg,rgba(10,10,10,.97),rgba(55,0,0,.96));
+    box-shadow:0 15px 45px rgba(0,0,0,.8),0 0 28px rgba(130,0,0,.3),inset 0 0 24px rgba(0,0,0,.75);
+    color:#fff;
+    z-index:900;
+    text-align:center;
+}
+.survivor-title{font-size:14px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase}
+.survivor-sub{font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,.48);margin-top:4px}
+.survivor-trophies{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:15px 0 8px;max-height:128px;overflow:hidden}
+.survivor-trophy{width:42px;height:48px;border:1px solid rgba(255,255,255,.1);border-radius:9px;background:rgba(255,255,255,.035);display:flex;align-items:center;justify-content:center;font-size:24px;opacity:.28;filter:grayscale(1);transition:transform .2s,opacity .2s,filter .2s,border-color .2s,background .2s}
+.survivor-trophy.won{opacity:1;filter:none;border-color:rgba(220,175,65,.7);background:rgba(120,80,0,.22);transform:translateY(-2px)}
+.survivor-trophy.won.new{animation:trophyPop .5s cubic-bezier(.15,.85,.25,1)}
+@keyframes trophyPop{0%{transform:scale(.35) rotate(-12deg);opacity:0}55%{transform:scale(1.18) rotate(4deg);opacity:1}100%{transform:scale(1) rotate(0)}}
+.survivor-count{font-size:24px;font-weight:900;letter-spacing:1px}
+.survivor-count span{color:#d8ad42}
+.survivor-bar{height:7px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin:10px 0 13px}
+.survivor-fill{height:100%;width:0;background:linear-gradient(90deg,#7a0000,#d8ad42);transition:width .3s}
+.survivor-config{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:11px}
+.survivor-config button,.survivor-control{border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(0,0,0,.45);color:#eee;cursor:pointer;font-weight:800}
+.survivor-config button{width:34px;height:32px;font-size:18px}
+.survivor-goal{min-width:52px;text-align:center;font-weight:900;font-size:17px}
+.survivor-buttons{display:flex;gap:6px;justify-content:center}
+.survivor-control{padding:9px 11px;font-size:11px;letter-spacing:.6px}
+.survivor-control.primary{background:linear-gradient(180deg,#a30000,#590000);border-color:rgba(255,255,255,.2)}
+.survivor-control:hover,.survivor-config button:hover{filter:brightness(1.2)}
+.survivor-message{min-height:16px;margin-top:9px;color:#d8ad42;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.survivor-overlay #survivorChallenge{left:auto;bottom:auto;transform:none;width:min(520px,92vw)}
+.survivor-overlay .survivor-controls-wrap{display:none}
+.survivor-overlay .survivor-sub{display:none}
+.survivor-overlay .survivor-config{display:none}
+@media(max-width:700px){
+    #survivorChallenge{left:12px;bottom:12px;width:calc(100% - 24px)}
+}
+
+
+/* =========================================================
+   ELBOYO19 — NAVEGACIÓN ENTRE HERRAMIENTAS
+   ========================================================= */
+.main-nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    width:min(92vw,760px);
+    margin:14px auto 10px;
+    padding:5px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:12px;
+    background:rgba(0,0,0,.55);
+    box-shadow:0 8px 25px rgba(0,0,0,.35);
+    position:relative;
+    z-index:950;
+}
+.main-nav-btn{
+    flex:1;
+    min-height:42px;
+    padding:10px 14px;
+    border:1px solid transparent;
+    border-radius:8px;
+    background:transparent;
+    color:rgba(255,255,255,.55);
+    font-weight:900;
+    font-size:11px;
+    letter-spacing:1px;
+    cursor:pointer;
+    transition:all .2s ease;
+}
+.main-nav-btn:hover{
+    color:#fff;
+    background:rgba(255,255,255,.06);
+}
+.main-nav-btn.active{
+    color:#fff;
+    background:linear-gradient(180deg,#a30000,#590000);
+    border-color:rgba(255,255,255,.16);
+    box-shadow:0 0 18px rgba(150,0,0,.28);
+}
+.site-section{
+    display:none;
+    width:100%;
+}
+.site-section.active-section{
+    display:block;
+}
+#killerSection{
+    width:100%;
+}
+#survivorSection{
+    min-height:calc(100vh - 90px);
+    align-items:center;
+    justify-content:center;
+    padding:30px 16px;
+}
+#survivorSection.active-section{
+    display:flex;
+}
+#survivorSection #survivorChallenge{
+    position:relative;
+    left:auto;
+    bottom:auto;
+    width:min(520px,92vw);
+    margin:0 auto;
+}
+#survivorSection .survivor-trophies{
+    max-height:none;
+}
+@media(max-width:700px){
+    .main-nav{
+        width:calc(100% - 24px);
+        flex-direction:column;
+    }
+    .main-nav-btn{
+        width:100%;
+    }
+}
+
+/* Navegación siempre interactiva */
+.main-nav{
+    position:relative !important;
+    z-index:9999 !important;
+    pointer-events:auto !important;
+}
+.main-nav-btn{
+    position:relative;
+    z-index:10000;
+    pointer-events:auto !important;
+}
+.site-section{
+    position:relative;
+}
+
+/* =========================================================
+   ELBOYO19 — NAVEGACIÓN
+   ========================================================= */
+.main-nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    width:min(92vw,760px);
+    margin:14px auto 10px;
+    padding:5px;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:12px;
+    background:rgba(0,0,0,.55);
+    position:relative;
+    z-index:9999;
+}
+.main-nav-btn{
+    flex:1;
+    min-height:42px;
+    padding:10px 14px;
+    border:1px solid transparent;
+    border-radius:8px;
+    background:transparent;
+    color:rgba(255,255,255,.55);
+    font-weight:900;
+    font-size:11px;
+    letter-spacing:1px;
+    cursor:pointer;
+    position:relative;
+    z-index:10000;
+}
+.main-nav-btn.active{
+    color:#fff;
+    background:linear-gradient(180deg,#a30000,#590000);
+    border-color:rgba(255,255,255,.16);
+}
+#killerSection{display:block;width:100%}
+#survivorSection{display:none;min-height:calc(100vh - 90px);align-items:center;justify-content:center;padding:30px 16px}
+
+</style>
 </head>
 
 <body>
 
 <div class="app">
+
+    <!-- ELBOYO19 — SECCIÓN PRINCIPAL -->
+    <nav class="main-nav" aria-label="Secciones">
+        <button type="button" class="main-nav-btn active" data-section="killerSection">
+            🎰 RULETA DE KILLERS
+        </button>
+        <button type="button" class="main-nav-btn" data-section="survivorSection">
+            🏆 VICTORIAS DE SOBREVIVIENTES
+        </button>
+    </nav>
+    <section id="killerSection" class="site-section active-section">
     <div class="brand">
         ELBOYO19
     </div>
@@ -1844,6 +2039,13 @@ body::after {
 </div>
 
 <div id="result"></div>
+
+<!-- =========================================================
+     SURVIVOR TROPHY CHALLENGE
+     ========================================================= -->
+
+</div>
+
 <div id="fxLayer">
     <div class="scanlines"></div>
     <div class="vignette"></div>
@@ -1857,6 +2059,37 @@ body::after {
     <div class="help">
         PRESIONA ESPACIO PARA GIRAR
     </div>
+    </section>
+
+    <section id="survivorSection" class="site-section survivor-section">
+        <div id="survivorChallenge" aria-label="Reto de superviviente">
+    <div class="survivor-title">🏆 ELBOYO19 — SURVIVOR WINS</div>
+    <div class="survivor-sub">META DE VICTORIAS</div>
+
+    <div class="survivor-config">
+        <button id="survivorGoalMinus" type="button">−</button>
+        <div class="survivor-goal" id="survivorGoal">5</div>
+        <button id="survivorGoalPlus" type="button">+</button>
+    </div>
+
+    <div class="survivor-trophies" id="survivorTrophies"></div>
+
+    <div class="survivor-count"><span id="survivorWins">0</span> / <span id="survivorGoalCount">5</span></div>
+    <div class="survivor-bar"><div class="survivor-fill" id="survivorFill"></div></div>
+
+    <div class="survivor-controls-wrap">
+        <div class="survivor-buttons">
+            <button id="survivorAdd" class="survivor-control primary" type="button">🏆 +1 VICTORIA</button>
+            <button id="survivorMinus" class="survivor-control" type="button">−1</button>
+            <button id="survivorReset" class="survivor-control" type="button">🔄 RESET</button>
+        </div>
+        <div class="survivor-buttons" style="margin-top:6px">
+            <button id="survivorOverlay" class="survivor-control" type="button">🎥 MODO OVERLAY</button>
+        </div>
+    </div>
+
+    <div class="survivor-message" id="survivorMessage" aria-live="polite"></div>
+    </section>
 
 </div>
 
@@ -3120,6 +3353,114 @@ document.addEventListener(
    ========================================================= */
 
 drawWheel();
+
+
+/* =========================================================
+   ELBOYO19 — SURVIVOR TROPHY CHALLENGE
+   ========================================================= */
+(function(){
+    const panel = document.getElementById("survivorChallenge");
+    const trophies = document.getElementById("survivorTrophies");
+    const winsEl = document.getElementById("survivorWins");
+    const goalEl = document.getElementById("survivorGoal");
+    const goalCountEl = document.getElementById("survivorGoalCount");
+    const fillEl = document.getElementById("survivorFill");
+    const messageEl = document.getElementById("survivorMessage");
+
+    let goal = 5;
+    let wins = 0;
+
+    function clampState(){
+        goal = Math.max(1, Math.min(50, Number(goal) || 5));
+        wins = Math.max(0, Math.min(goal, Number(wins) || 0));
+    }
+
+    function renderTrophies(){
+        trophies.innerHTML = "";
+        for(let i=0;i<goal;i++){
+            const trophy = document.createElement("div");
+            trophy.className = "survivor-trophy" + (i < wins ? " won" : "");
+            trophy.textContent = "🏆";
+            trophy.setAttribute("aria-label", i < wins ? "Victoria conseguida" : "Victoria pendiente");
+            trophies.appendChild(trophy);
+        }
+        const nodes = trophies.querySelectorAll(".survivor-trophy");
+        if(wins > 0 && nodes[wins-1]) nodes[wins-1].classList.add("new");
+    }
+
+    function render(){
+        clampState();
+        goalEl.textContent = goal;
+        goalCountEl.textContent = goal;
+        winsEl.textContent = wins;
+        fillEl.style.width = ((wins / goal) * 100) + "%";
+        messageEl.textContent = wins >= goal ? "🔥 ¡RETO COMPLETADO!" : (wins ? "¡Vas " + wins + "/" + goal + "!" : "");
+        renderTrophies();
+    }
+
+    document.getElementById("survivorGoalMinus").addEventListener("click", function(){
+        if(goal > 1){ goal--; if(wins > goal) wins = goal; render(); }
+    });
+    document.getElementById("survivorGoalPlus").addEventListener("click", function(){
+        if(goal < 50){ goal++; render(); }
+    });
+    document.getElementById("survivorAdd").addEventListener("click", function(){
+        if(wins < goal){ wins++; render(); }
+    });
+    document.getElementById("survivorMinus").addEventListener("click", function(){
+        if(wins > 0){ wins--; render(); }
+    });
+    document.getElementById("survivorReset").addEventListener("click", function(){
+        wins = 0; render();
+    });
+    document.getElementById("survivorOverlay").addEventListener("click", function(){
+        document.body.classList.toggle("survivor-overlay");
+        this.textContent = document.body.classList.contains("survivor-overlay")
+            ? "⚙️ MOSTRAR CONTROLES"
+            : "🎥 MODO OVERLAY";
+    });
+
+    render();
+})();
+
+
+
+/* =========================================================
+   ELBOYO19 — NAVEGACIÓN DE SECCIONES
+   ========================================================= */
+(function(){
+    const buttons = document.querySelectorAll(".main-nav-btn");
+    const killer = document.getElementById("killerSection");
+    const survivor = document.getElementById("survivorSection");
+
+    if(!buttons.length || !killer || !survivor) return;
+
+    function switchSection(target){
+        const isSurvivor = target === "survivor";
+
+        killer.style.display = isSurvivor ? "none" : "block";
+        survivor.style.display = isSurvivor ? "flex" : "none";
+
+        buttons.forEach(function(btn){
+            btn.classList.toggle(
+                "active",
+                btn.dataset.section === (isSurvivor ? "survivorSection" : "killerSection")
+            );
+        });
+    }
+
+    buttons.forEach(function(btn){
+        btn.addEventListener("click", function(){
+            switchSection(
+                btn.dataset.section === "survivorSection"
+                    ? "survivor"
+                    : "killer"
+            );
+        });
+    });
+
+    switchSection("killer");
+})();
 
 </script>
 
