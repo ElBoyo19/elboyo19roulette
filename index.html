@@ -2510,6 +2510,18 @@ body::after {
 }
 
 </style>
+
+<style id="survivor-filter-fix-style">
+#survivorFilterPanel{z-index:1002}
+#survivorFilterPanel .survivor-option{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08);cursor:pointer}
+#survivorFilterPanel .survivor-option:hover{background:rgba(255,255,255,.05)}
+#survivorFilterPanel .survivor-option input{margin-top:3px;accent-color:#c40000}
+#survivorFilterPanel .survivor-info{display:flex;flex-direction:column;gap:3px}
+#survivorFilterPanel .survivor-name{font-weight:900;color:#fff}
+#survivorFilterPanel .survivor-perks{font-size:11px;line-height:1.35;color:rgba(255,255,255,.65)}
+#survivorFilterPanel .survivor-count{margin-left:auto;font-size:10px;opacity:.55}
+</style>
+
 </head>
 
 <body>
@@ -2666,6 +2678,7 @@ body::after {
 
             <div class="perk-controls">
                 <button id="perkFilterButton" class="secondary-button" type="button">⚙️ CONFIGURAR PERKS</button>
+                <button id="survivorFilterButton" class="secondary-button" type="button">👤 SUPERVIVIENTES</button>
                 <button id="perkResetButton" class="secondary-button" type="button">🔄 REINICIAR RULETA</button>
             </div>
 
@@ -2679,7 +2692,22 @@ body::after {
         </div>
     </div>
 
-    <div id="perkFilterPanel" class="perk-filter-panel">
+    
+<div id="survivorFilterPanel" class="perk-filter-panel">
+    <div class="filter-header">
+        <div class="filter-title">👤 FILTRAR POR SUPERVIVIENTE</div>
+        <button id="survivorCloseFilter" type="button">✕</button>
+    </div>
+    <input type="text" id="survivorSearch2" placeholder="🔎 Buscar superviviente..." autocomplete="off">
+    <div class="filter-actions">
+        <button id="survivorSelectAll" type="button">✓ TODOS</button>
+        <button id="survivorSelectNone" type="button">✕ NINGUNO</button>
+    </div>
+    <div id="survivorList" class="perk-list"></div>
+    <button id="survivorApplyFilter" type="button">✓ APLICAR CAMBIOS</button>
+</div>
+
+<div id="perkFilterPanel" class="perk-filter-panel">
                 <div class="filter-header">
                     <div class="filter-title">CONFIGURAR PERKS</div>
                     <button id="perkCloseFilter" type="button">✕</button>
@@ -4025,6 +4053,124 @@ drawWheel();
     const count = document.getElementById("perkCount");
     const result = document.getElementById("perkResult");
 
+const survivorFilters = [["Dwight Fairfield", ["Vínculo", "Demuestra lo que Vales", "Líder"]], ["Meg Thomas", ["Esprint", "Adrenalina", "Arrebato"]], ["Claudette Morel", ["Empatía", "Autocuración", "Conocimientos de Botánica"]], ["Jake Park", ["Voluntad de Hierro", "Sabotear", "Espíritu Calmado"]], ["Nea Karlsson", ["Caída Equilibrada", "Evasión Urbana", "Fortaleza en las Sombras"]], ["Laurie Strode", ["Golpe Decisivo", "Objeto de Obsesión", "Salvaguarda de Alma"]], ["Ace Visconti", ["As En la Manga", "Bulo", "A Mano Descubierta"]], ["William 'Bill' Overbeck", ["Inquebrantable", "Tiempo Prestado", "Vamos a Vivir para Siempre"]], ["Feng Min", ["Alerta", "Éxito Arrollador", "Técnica"]], ["David King", ["Dead Hard", "Fajador", "Vamos a Vivir para Siempre"]], ["Quentin Smith", ["Farmacia", "Vigilancia", "¡Despierta!"]], ["David Tapp", ["Corazonada", "Vigía", "Tenacidad"]], ["Kate Denson", ["Baila Conmigo", "Oportunidades", "Cargar a Cuestas"]], ["Adam Francis", ["Liberación", "Autodidacta", "Vigilancia"]], ["Jeff Johansen", ["Ruptura", "Distorsión", "Postratamiento"]], ["Jane Romero", ["Solidaridad", "Serenidad", "De Frente"]], ["Ash Williams", ["Apuesta", "Reversión", "Campeón de la Luz"]], ["Nancy Wheeler", ["Mejor Juntos", "Fijación", "Fuerza Interior"]], ["Steve Harrington", ["Niñero", "Camaradería", "Renovación"]], ["Yui Kimura", ["Golpe de Suerte", "Ágil", "Fortaleza en las Sombras"]], ["Zarina Kassir", ["Grito de Salvación", "Por la Gente", "Reafirmación"]], ["Cheryl Mason", ["Renacimiento", "Pacto de Sangre", "Supresión de Alianza"]], ["Felix Richter", ["Medidas Desesperadas", "Visionario", "Diseñado para Durar"]], ["Élodie Rakoto", ["Evaluación", "Contrafuerza", "Medida Correctiva"]], ["Yun-Jin Lee", ["Bulo", "Competencia Amistosa", "Cabeza de Lista"]], ["Jill Valentine", ["Contrafuerza", "Mina Cegadora", "Ruptura"]], ["Leon S. Kennedy", ["Mina Cegadora", "Granada Aturdidora", "Espíritu de Novato"]], ["Mikaela Reid", ["Bendición: Círculo de Curación", "Bendición: Paso Sombrío", "Bendición: Exponencial"]], ["Jonah Vasquez", ["Sobreponerse", "Corrección", "Medida Correctiva"]], ["Yoichi Asakawa", ["Bendición: Iluminación", "Empatía", "Consejos de Papá"]], ["Haddie Kaur", ["Enfoque Interno", "Campeón de la Luz", "Manifiesto Residual"]], ["Ada Wong", ["Interceptor", "Respuesta Rápida", "Especialista"]], ["Rebecca Chambers", ["Mejor que Nuevo", "Reafirmación", "Echar una Mano"]], ["Vittorio Toscano", ["Energía Potencial", "Conocimiento de la Niebla", "De La Calle"]], ["Thalita Lyra", ["Competencia Amistosa", "Cosechas lo que Siembras", "Corte Limpio"]], ["Renato Lyra", ["Jugador de Fondo", "Sangre Nueva", "Perfil Bajo"]], ["Gabriel Soma", ["Solucionador de Problemas", "Nacido para Esto", "Chatarrero"]], ["Nicolas Cage", ["Dramaturgia", "Giro Argumental", "Escapista"]], ["Ellen Ripley", ["Estrella de la Suerte", "Trampa Química", "Pie Ligero"]], ["Alan Wake", ["Campeón de la Luz", "Bendición: Iluminación", "Fecha Límite"]], ["Sable Ward", ["Invocación: Arañas Tejedoras", "Bendición: Iluminación", "Salvaguarda de Alma"]], ["Lara Croft", ["Finura", "Especialista", "Fortaleza en las Sombras"]], ["Trevor Belmont", ["Ojos de Belmont", "Última Resistencia", "Exultación"]], ["Taurie Cain", ["Grito de Salvación", "Invocación: Cuervos Traicioneros", "Bendición: Determinación"]], ["Kwon Tae-young", ["Estado de Flujo", "Un Lugar Para Nosotros", "Cinco Movimientos Adelante"]], ["Vee Boonyasak", ["Vida Itinerante", "¡Uno-Dos-Tres-Cuatro!", "Notas Fantasma"]], ["Shane Wiigwaas", ["Máxima Velocidad", "Echar una Mano", "Interrogatorio"]], ["Eleven", ["Percepción Extrasensorial", "Te Vemos", "Trabajo en Equipo: Tono Gentil"]], ["Rick Grimes", ["Ingenio Apocalíptico", "¡Ven Por Mí!", "Trabajo en Equipo: Entereza"]], ["Michonne", ["Convicción", "Última Resistencia", "Trabajo en Equipo: Lanzamiento"]]];
+
+    const survivorFilterBtn = document.getElementById("survivorFilterButton");
+    const survivorFilterPanel = document.getElementById("survivorFilterPanel");
+    const survivorCloseFilter = document.getElementById("survivorCloseFilter");
+    const survivorSearch = document.getElementById("survivorSearch2");
+    const survivorList = document.getElementById("survivorList");
+    const survivorSelectAll = document.getElementById("survivorSelectAll");
+    const survivorSelectNone = document.getElementById("survivorSelectNone");
+    const survivorApply = document.getElementById("survivorApplyFilter");
+
+    const survivorStorageKey = "elboyo19_survivor_filter_v2";
+    let selectedSurvivors = new Set();
+
+    try {
+        const saved = JSON.parse(localStorage.getItem(survivorStorageKey) || "[]");
+        if(Array.isArray(saved)) selectedSurvivors = new Set(saved);
+    } catch(e) {}
+
+    if(!selectedSurvivors.size){
+        survivorFilters.forEach(([name]) => selectedSurvivors.add(name));
+    }
+
+    function survivorPerks(name){
+        const found = survivorFilters.find(x => x[0] === name);
+        return found ? found[1].filter(p => perkNames.includes(p)) : [];
+    }
+
+    function renderSurvivorList(){
+        survivorList.innerHTML = "";
+        const q = survivorSearch.value.toLowerCase().trim();
+
+        survivorFilters.forEach(([name, perks]) => {
+            if(q && !name.toLowerCase().includes(q)) return;
+
+            const label = document.createElement("label");
+            label.className = "perk-option survivor-option";
+
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = selectedSurvivors.has(name);
+
+            checkbox.addEventListener("change", () => {
+                if(checkbox.checked) selectedSurvivors.add(name);
+                else selectedSurvivors.delete(name);
+            });
+
+            const info = document.createElement("span");
+            info.className = "survivor-info";
+
+            const title = document.createElement("span");
+            title.className = "survivor-name";
+            title.textContent = name;
+
+            const perkText = document.createElement("span");
+            perkText.className = "survivor-perks";
+            perkText.textContent = perks.join(" • ");
+
+            info.append(title, perkText);
+            label.append(checkbox, info);
+
+            survivorList.appendChild(label);
+        });
+    }
+
+    function applySurvivorFilter(){
+        // Perks que no están ligadas a un superviviente en este filtro
+        // se conservan; las perks de superviviente se reconstruyen según
+        // los personajes seleccionados.
+        const mappedPerks = new Set(survivorFilters.flatMap(x => survivorPerks(x[0])));
+        const generalPerks = perkNames.filter(p => !mappedPerks.has(p));
+
+        const selectedPerks = new Set(
+            survivorFilters
+                .filter(([name]) => selectedSurvivors.has(name))
+                .flatMap(([name]) => survivorPerks(name))
+        );
+
+        available = perkNames.filter(p => generalPerks.includes(p) ? true : selectedPerks.has(p));
+        pending = [...available];
+
+        localStorage.setItem(
+            survivorStorageKey,
+            JSON.stringify([...selectedSurvivors])
+        );
+
+        updateCount();
+        drawWheel();
+        result.innerHTML = "";
+    }
+
+    survivorFilterBtn.addEventListener("click", () => {
+        survivorSearch.value = "";
+        renderSurvivorList();
+        survivorFilterPanel.classList.add("open");
+    });
+
+    survivorCloseFilter.addEventListener("click", () => {
+        survivorFilterPanel.classList.remove("open");
+    });
+
+    survivorSearch.addEventListener("input", renderSurvivorList);
+
+    survivorSelectAll.addEventListener("click", () => {
+        survivorFilters.forEach(([name]) => selectedSurvivors.add(name));
+        renderSurvivorList();
+    });
+
+    survivorSelectNone.addEventListener("click", () => {
+        selectedSurvivors.clear();
+        renderSurvivorList();
+    });
+
+    survivorApply.addEventListener("click", () => {
+        applySurvivorFilter();
+        survivorFilterPanel.classList.remove("open");
+    });
+
     let available = [...perkNames];
     let pending = [...perkNames];
     let rotation = 0;
@@ -4162,8 +4308,19 @@ drawWheel();
 
     resetBtn.addEventListener("click",()=>{
         if(spinning)return;
-        available=[...perkNames];pending=[...perkNames];search.value="";result.innerHTML="";rotation=0;updateCount();drawWheel();
+        available=[...perkNames];
+        pending=[...perkNames];
+        search.value="";
+        result.innerHTML="";
+        rotation=0;
+        survivorFilters.forEach(([name]) => selectedSurvivors.add(name));
+        localStorage.setItem(survivorStorageKey, JSON.stringify([...selectedSurvivors]));
+        updateCount();
+        drawWheel();
     });
+
+    // El filtro por superviviente controla directamente las perks disponibles.
+    applySurvivorFilter();
 
     spinBtn.addEventListener("click",()=>{
         if(spinning||!available.length)return;
@@ -4608,6 +4765,13 @@ const target=270-(winner*sliceDeg+sliceDeg/2);
     drawMiniWheel();
 })();
 
+</script>
+
+
+<script>
+document.addEventListener('elboyo19:perkFilterChanged', function(e){
+  window.elboyo19PerkFilter=e.detail.perks;
+});
 </script>
 
 </body>
