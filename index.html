@@ -4772,4 +4772,65 @@ const target=270-(winner*sliceDeg+sliceDeg/2);
         const finalRotation=rotation + Math.PI*2*9 + correction;
 
         const duration=7000;
-        const startTime=performance.n
+        const startTime=performance.now();
+        let lastTick=-1;
+
+        function animate(now){
+            const progress=Math.min(1,(now-startTime)/duration);
+            const ease=1-Math.pow(1-progress,4);
+
+            rotation=startRotation+(finalRotation-startRotation)*ease;
+            drawMiniWheel();
+
+            const tickIndex=Math.floor(rotation/(slice*.72));
+            if(tickIndex!==lastTick){
+                lastTick=tickIndex;
+
+                if(progress>.66 && typeof playTensionTick==="function"){
+                    playTensionTick(Math.min(1,(progress-.66)/.34));
+                }else if(typeof playTick==="function"){
+                    playTick();
+                }
+            }
+
+            if(progress<1){
+                requestAnimationFrame(animate);
+            }else{
+                rotation=finalRotation;
+                drawMiniWheel();
+
+                // Usa exactamente la opción que fue seleccionada.
+                showMiniResult(options[winner]);
+
+                box.classList.remove("mini-revealed");
+                void box.offsetWidth;
+                box.classList.add("mini-revealed");
+
+                if(typeof playRevealSound==="function") playRevealSound();
+
+                setTimeout(()=>{
+                    box.classList.remove("mini-revealed");
+                },500);
+
+                spinning=false;
+                button.disabled=false;
+            }
+        }
+
+        requestAnimationFrame(animate);
+    });
+
+    drawMiniWheel();
+})();
+
+</script>
+
+
+<script>
+document.addEventListener('elboyo19:perkFilterChanged', function(e){
+  window.elboyo19PerkFilter=e.detail.perks;
+});
+</script>
+
+</body>
+</html>
