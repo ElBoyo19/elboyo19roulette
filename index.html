@@ -2683,7 +2683,7 @@ body::after {
             </div>
 
             <div id="perkCount" class="perk-count">
-                PERKS DISPONIBLES: <strong>179 / 179</strong>
+                PERKS DISPONIBLES: <strong>162 / 162</strong>
             </div>
         </div>
 
@@ -4036,7 +4036,7 @@ drawWheel();
    179 perks — patch 10.1 reference set
    ========================================================= */
 (function(){
-    const perkNames = ["Vínculo", "Demuestra lo que Vales", "Líder", "Velocidad Silenciosa", "Esprint", "Adrenalina", "Empatía", "Conocimientos de Botánica", "Autocuración", "Voluntad de Hierro", "Espíritu Calmado", "Sabotear", "Caída Equilibrada", "Evasión Urbana", "De La Calle", "Solo Quedo Yo", "Objeto de Obsesión", "Golpe Decisivo", "A Mano Descubierta", "Subir las Apuestas", "As en la Manga", "Abandonado a tu Suerte", "Tiempo Prestado", "Inquebrantable", "Pericia Técnica", "Agilidad", "Alerta", "Vamos a Vivir para Siempre", "Fajador", "Me Da Igual", "¡Despierta!", "Farmacia", "Vigilia", "Tenacidad", "Corazonada", "Bajo Vigilancia", "Baila Conmigo", "Oportunidades", "Arrebato", "Distracción", "Liberación", "Autodidacta", "Ruptura", "Postratamiento", "Distorsión", "Solidaridad", "Serenidad", "De Frente", "Nos Vemos", "Sujétate", "El Temple del Hombre", "Mejor Juntos", "Fijación", "Fuerza Interior", "Niñero", "Camaradería", "Renovación", "Golpe de Suerte", "Por Cualquier Medio", "Fuga", "Extraoficialmente", "Arenque Rojo", "Por la Gente", "Defensa del Alma", "Pacto de Sangre", "Alianza Reprimida", "Visionario", "Medidas Desesperadas", "Diseñado para Durar", "Detallista", "Engaño", "Lucha Intensa", "Vía Rápida", "Éxito Arrollador", "Autoconservación", "Contramedida", "Resurgimiento", "Mina Cegadora", "Aguante el Dolor", "Granada Aturdidora", "Espíritu de Novato", "Clarividencia", "Bendición: Círculo de Curación", "Bendición: Paso Sombrío", "Superar", "Corrección", "Bendición: Exponencial", "Consejo Paterno", "Conexión Empática", "Bendición: Teoría Oscura", "Enfoque Interno", "Manifestación Residual", "Pasión", "Interceptor", "Curación Reactiva", "Perfil Bajo", "Mejor que Nuevo", "Reafirmación", "Hiperconcentración", "Energía Potencial", "Conocimiento de la Niebla", "Gambito Rápido", "Competencia Amistosa", "Trabajo en Equipo: El Poder de Dos", "Suéltate", "Impulso Sangriento", "Trabajo en Equipo: Sigilo Colectivo", "Personaje Secundario", "Solucionador de Problemas", "Nacido para Esto", "Chatarrero", "Dramaturgia", "Compañero de Escena", "Giro Argumental", "Trampa Química", "Ágil", "Estrella de la Suerte", "Campeón de la Luz", "Bendición: Iluminación", "Fecha Límite", "Invocación: Arañas Tejedoras", "Fortaleza en las Sombras", "Malicia", "Ilusión Reflejada", "Inspiración Bárdica", "Mirada Fija", "Elegancia", "Endurecida", "Especialista", "Exultación", "Momento de Gloria", "Ojos de Belmont", "Invocación: Cuervos Traicioneros", "Limpieza Total", "Asumir la Carga", "No Hagas Daño", "El Deber de Cuidar", "Respuesta Rápida", "Ingenio Apocalíptico", "¡Ven Por Mí!", "Trabajo en Equipo: Entereza", "Convicción", "Último Enfrentamiento", "Trabajo en Equipo: Lanzamiento", "Vida Itinerante", "¡Uno-Dos-Tres-Cuatro!", "Notas Fantasma", "Bada, Bada, Bum", "Cambio de Planes", "Trabajo en Equipo: Circuito Completo", "Percepción Extrasensorial", "Te Vemos", "Trabajo en Equipo: Tono Gentil", "Estado de Flujo", "Un Lugar Para Nosotros", "Cinco Movimientos Adelante", "Máxima Velocidad", "Echar una Mano", "Interrogatorio", "Cosechas lo que Siembras", "Grito de Salvación", "Bendición: Determinación", "Carne Resbaladiza", "Caza Menor", "De Pies Ligeros", "Déjà Vu", "Escalofríos", "Esperanza", "Esto No Puede Estar Pasando", "Familia", "Instinto de Saqueador", "Nadie Se Queda Atrás", "Percepción Oscura", "Premonición", "Resiliencia", "Sobreviviremos", "Ganas de Vivir", "Hasta Terminar con el Último", "Ligado por Obsesión"];
+    const perkNames = ["Vínculo", "Demuestra lo que Vales", "Líder", "Velocidad Silenciosa", "Esprint", "Adrenalina", "Empatía", "Conocimientos de Botánica", "Autocuración", "Voluntad de Hierro", "Espíritu Calmado", "Sabotear", "Caída Equilibrada", "Evasión Urbana", "Con Calle", "Golpe Decisivo", "Objeto de Obsesión", "Solo Quedo Yo", "A Mano Descubierta", "Subir las Apuestas", "As En la Manga", "Abandonado a tu Suerte", "Tiempo Prestado", "Inquebrantable", "Pericia Técnica", "Agilidad", "Alerta", "Vamos a Vivir para Siempre", "Fajador", "Me La Pela", "Farmacia", "Vigilia", "¡Despierta!", "Corazonada", "Bajo Vigilancia", "Tenacidad", "Baila Conmigo", "Oportunidades", "Arrebato", "Liberación", "Autodidacta", "Distracción", "Ruptura", "Distorsión", "Postratamiento", "Solidaridad", "Serenidad", "De Frente", "El Temple del Hombre", "Hasta Otra", "Sujétate", "Mejor Juntos", "Fijación", "Fuerza Interior", "Canguro", "Camaradería", "Segundo Aliento", "Golpe de Suerte", "Cueste lo que Cueste", "Fuga", "Extraoficial", "Por Los Demás", "Bulo", "Salvaguarda de Alma", "Pacto de Sangre", "Supresión de Alianza", "Medidas Desesperadas", "Visión del Futuro", "Construcción Duradera", "Evaluación", "Engaño", "Lucha Intensa", "Primera Línea", "Éxito Aplastante", "Autoconservación", "Contrafuerza", "Mina Explosiva", "Resurgimiento", "De Tripas Corazón", "Granada Aturdidora", "Espíritu de Novato", "Bendición: Círculo de Curación", "Bendición: Paso Sombrío", "Clarividencia", "Sobreponerse", "Bendición: Exponencial", "Medida Correctiva", "Bendición: Teoría Oscura", "Conexión Empática", "Consejo Paterno", "Pasión", "Concentración Interna", "Manifestación Residual", "Interceptor", "Curación Reactiva", "Perfil Bajo", "Mejor que Nuevo", "Reafirmación", "Hiperconcentración", "Energía Potencial", "Neblinoso", "Táctica Veloz", "Rivalidad Amistosa", "Desátame", "Trabajo en Equipo: Poder Dual", "Jugador Secundario", "Torrente de Sangre", "Trabajo en Equipo: Sigilo Colectivo", "Solucionador de Problemas", "Hecho Para Esto", "Buscador", "Dramaturgia", "Giro Argumental", "Compañero de Escena", "Estrella de la Suerte", "Trampa Química", "Ligera de Pies", "Campeón de la Luz", "Bendición: Iluminación", "Fecha Límite", "Invocación: Arañas Tejedoras", "Fuerza en las Sombras", "Embrujada", "Espejismo", "Inspiración Bárdica", "Visión Estática", "Sutileza", "Especialista", "Curtida", "Ojos de Belmont", "Momento de Gloria", "Exultación", "Separación Limpia", "Invocación: Cuervos Traicioneros", "Carga Sobre los Hombros", "No Hacer Daño", "Deber de Socorro", "Respuesta Rápida", "Ingenio Apocalíptico", "¡Ven A Por Mí!", "Trabajo en Equipo: Curtirse", "Convicción", "Última Defensa", "Trabajo en Equipo: Al Derribo", "Vida en la Carretera", "¡Uno-Dos-Tres-Cuatro!", "Notas Fantasmales", "Bada, Bada, Bum", "Cambio de Planes", "Trabajo en Equipo: Circuito Completo", "Percepción Extrasensorial", "Te Vemos", "Trabajo en Equipo: Tono Suave", "Estado de Flujo", "Un Lugar Para Nosotros", "Cinco Pasos Por Delante", "Acelerador a Fondo", "Echar una Mano", "Contrainterrogatorio", "Fruto de tu Esfuerzo", "Grito de Salvación", "Bendición: Decisión"];
 
     const canvas = document.getElementById("perkWheel");
     const ctx = canvas.getContext("2d");
@@ -4053,7 +4053,7 @@ drawWheel();
     const count = document.getElementById("perkCount");
     const result = document.getElementById("perkResult");
 
-const survivorFilters = [["Dwight Fairfield", ["Vínculo", "Demuestra lo que Vales", "Líder"]], ["Meg Thomas", ["Velocidad Silenciosa", "Esprint", "Adrenalina"]], ["Claudette Morel", ["Empatía", "Conocimientos de Botánica", "Autocuración"]], ["Jake Park", ["Voluntad de Hierro", "Espíritu Calmado", "Sabotear"]], ["Nea Karlsson", ["Caída Equilibrada", "Evasión Urbana", "De La Calle"]], ["Laurie Strode", ["Solo Quedo Yo", "Objeto de Obsesión", "Golpe Decisivo"]], ["Ace Visconti", ["A Mano Descubierta", "Subir las Apuestas", "As en la Manga"]], ["Bill Overbeck", ["Abandonado a tu Suerte", "Tiempo Prestado", "Inquebrantable"]], ["Feng Min", ["Pericia Técnica", "Agilidad", "Alerta"]], ["David King", ["Vamos a Vivir para Siempre", "Fajador", "Me Da Igual"]], ["Quentin Smith", ["¡Despierta!", "Farmacia", "Vigilia"]], ["David Tapp", ["Tenacidad", "Corazonada", "Bajo Vigilancia"]], ["Kate Denson", ["Baila Conmigo", "Oportunidades", "Arrebato"]], ["Adam Francis", ["Distracción", "Liberación", "Autodidacta"]], ["Jeff Johansen", ["Ruptura", "Postratamiento", "Distorsión"]], ["Jane Romero", ["Solidaridad", "Serenidad", "De Frente"]], ["Ash Williams", ["Nos Vemos", "Sujétate", "El Temple del Hombre"]], ["Nancy Wheeler", ["Mejor Juntos", "Fijación", "Fuerza Interior"]], ["Steve Harrington", ["Niñero", "Camaradería", "Renovación"]], ["Yui Kimura", ["Golpe de Suerte", "Por Cualquier Medio", "Fuga"]], ["Zarina Kassir", ["Extraoficialmente", "Arenque Rojo", "Por la Gente"]], ["Cheryl Mason", ["Defensa del Alma", "Pacto de Sangre", "Alianza Reprimida"]], ["Felix Richter", ["Visionario", "Medidas Desesperadas", "Diseñado para Durar"]], ["Élodie Rakoto", ["Detallista", "Engaño", "Lucha Intensa"]], ["Lee Yun-jin", ["Vía Rápida", "Éxito Arrollador", "Autoconservación"]], ["Jill Valentine", ["Contramedida", "Resurgimiento", "Mina Cegadora"]], ["Leon Scott Kennedy", ["Aguante el Dolor", "Granada Aturdidora", "Espíritu de Novato"]], ["Mikaela Reid", ["Clarividencia", "Bendición: Círculo de Curación", "Bendición: Paso Sombrío"]], ["Jonah Vasquez", ["Superar", "Corrección", "Bendición: Exponencial"]], ["Yoichi Asakawa", ["Consejo Paterno", "Conexión Empática", "Bendición: Teoría Oscura"]], ["Haddie Kaur", ["Enfoque Interno", "Manifestación Residual", "Pasión"]], ["Ada Wong", ["Interceptor", "Curación Reactiva", "Perfil Bajo"]], ["Rebecca Chambers", ["Mejor que Nuevo", "Reafirmación", "Hiperconcentración"]], ["Vittorio Toscano", ["Energía Potencial", "Conocimiento de la Niebla", "Gambito Rápido"]], ["Thalita Lyra", ["Competencia Amistosa", "Trabajo en Equipo: El Poder de Dos", "Suéltate"]], ["Renato Lyra", ["Impulso Sangriento", "Trabajo en Equipo: Sigilo Colectivo", "Personaje Secundario"]], ["Gabriel Soma", ["Solucionador de Problemas", "Nacido para Esto", "Chatarrero"]], ["Nicolas Cage", ["Dramaturgia", "Compañero de Escena", "Giro Argumental"]], ["Ellen Ripley", ["Trampa Química", "Ágil", "Estrella de la Suerte"]], ["Alan Wake", ["Campeón de la Luz", "Bendición: Iluminación", "Fecha Límite"]], ["Sable Ward", ["Invocación: Arañas Tejedoras", "Fortaleza en las Sombras", "Malicia"]], ["Aestri Yazar", ["Ilusión Reflejada", "Inspiración Bárdica", "Mirada Fija"]], ["Lara Croft", ["Elegancia", "Endurecida", "Especialista"]], ["Trevor Belmont", ["Exultación", "Momento de Gloria", "Ojos de Belmont"]], ["Taurie Cain", ["Invocación: Cuervos Traicioneros", "Limpieza Total", "Asumir la Carga"]], ["Orela Rose", ["No Hagas Daño", "El Deber de Cuidar", "Respuesta Rápida"]], ["Rick Grimes", ["Ingenio Apocalíptico", "¡Ven Por Mí!", "Trabajo en Equipo: Entereza"]], ["Michonne Grimes", ["Convicción", "Último Enfrentamiento", "Trabajo en Equipo: Lanzamiento"]], ["Vee Boonyasak", ["Vida Itinerante", "¡Uno-Dos-Tres-Cuatro!", "Notas Fantasma"]], ["Dustin Henderson", ["Bada, Bada, Bum", "Cambio de Planes", "Trabajo en Equipo: Circuito Completo"]], ["Once", ["Percepción Extrasensorial", "Te Vemos", "Trabajo en Equipo: Tono Gentil"]], ["Kwon Tae-young", ["Estado de Flujo", "Un Lugar Para Nosotros", "Cinco Movimientos Adelante"]], ["Shane Wiigwaas", ["Máxima Velocidad", "Echar una Mano", "Interrogatorio"]], ["Aurora Stardotter", ["Cosechas lo que Siembras", "Grito de Salvación", "Bendición: Determinación"]]];
+const survivorFilters = [["Dwight Fairfield", ["Vínculo", "Demuestra lo que Vales", "Líder"]], ["Meg Thomas", ["Velocidad Silenciosa", "Esprint", "Adrenalina"]], ["Claudette Morel", ["Empatía", "Conocimientos de Botánica", "Autocuración"]], ["Jake Park", ["Voluntad de Hierro", "Espíritu Calmado", "Sabotear"]], ["Nea Karlsson", ["Caída Equilibrada", "Evasión Urbana", "Con Calle"]], ["Laurie Strode", ["Golpe Decisivo", "Objeto de Obsesión", "Solo Quedo Yo"]], ["Ace Visconti", ["A Mano Descubierta", "Subir las Apuestas", "As En la Manga"]], ["Bill Overbeck", ["Abandonado a tu Suerte", "Tiempo Prestado", "Inquebrantable"]], ["Feng Min", ["Pericia Técnica", "Agilidad", "Alerta"]], ["David King", ["Vamos a Vivir para Siempre", "Fajador", "Me La Pela"]], ["Quentin Smith", ["Farmacia", "Vigilia", "¡Despierta!"]], ["David Tapp", ["Corazonada", "Bajo Vigilancia", "Tenacidad"]], ["Kate Denson", ["Baila Conmigo", "Oportunidades", "Arrebato"]], ["Adam Francis", ["Liberación", "Autodidacta", "Distracción"]], ["Jeff Johansen", ["Ruptura", "Distorsión", "Postratamiento"]], ["Jane Romero", ["Solidaridad", "Serenidad", "De Frente"]], ["Ash Williams", ["El Temple del Hombre", "Hasta Otra", "Sujétate"]], ["Nancy Wheeler", ["Mejor Juntos", "Fijación", "Fuerza Interior"]], ["Steve Harrington", ["Canguro", "Camaradería", "Segundo Aliento"]], ["Yui Kimura", ["Golpe de Suerte", "Cueste lo que Cueste", "Fuga"]], ["Zarina Kassir", ["Extraoficial", "Por Los Demás", "Bulo"]], ["Cheryl Mason", ["Salvaguarda de Alma", "Pacto de Sangre", "Supresión de Alianza"]], ["Felix Richter", ["Medidas Desesperadas", "Visión del Futuro", "Construcción Duradera"]], ["Élodie Rakoto", ["Evaluación", "Engaño", "Lucha Intensa"]], ["Lee Yun-jin", ["Primera Línea", "Éxito Aplastante", "Autoconservación"]], ["Jill Valentine", ["Contrafuerza", "Mina Explosiva", "Resurgimiento"]], ["Leon Scott Kennedy", ["De Tripas Corazón", "Granada Aturdidora", "Espíritu de Novato"]], ["Mikaela Reid", ["Bendición: Círculo de Curación", "Bendición: Paso Sombrío", "Clarividencia"]], ["Jonah Vasquez", ["Sobreponerse", "Bendición: Exponencial", "Medida Correctiva"]], ["Yoichi Asakawa", ["Bendición: Teoría Oscura", "Conexión Empática", "Consejo Paterno"]], ["Haddie Kaur", ["Pasión", "Concentración Interna", "Manifestación Residual"]], ["Ada Wong", ["Interceptor", "Curación Reactiva", "Perfil Bajo"]], ["Rebecca Chambers", ["Mejor que Nuevo", "Reafirmación", "Hiperconcentración"]], ["Vittorio Toscano", ["Energía Potencial", "Neblinoso", "Táctica Veloz"]], ["Thalita Lyra", ["Rivalidad Amistosa", "Desátame", "Trabajo en Equipo: Poder Dual"]], ["Renato Lyra", ["Jugador Secundario", "Torrente de Sangre", "Trabajo en Equipo: Sigilo Colectivo"]], ["Gabriel Soma", ["Solucionador de Problemas", "Hecho Para Esto", "Buscador"]], ["Nicolas Cage", ["Dramaturgia", "Giro Argumental", "Compañero de Escena"]], ["Ellen Ripley", ["Estrella de la Suerte", "Trampa Química", "Ligera de Pies"]], ["Alan Wake", ["Campeón de la Luz", "Bendición: Iluminación", "Fecha Límite"]], ["Sable Ward", ["Invocación: Arañas Tejedoras", "Fuerza en las Sombras", "Embrujada"]], ["Aestri Yazar", ["Espejismo", "Inspiración Bárdica", "Visión Estática"]], ["Lara Croft", ["Sutileza", "Especialista", "Curtida"]], ["Trevor Belmont", ["Ojos de Belmont", "Momento de Gloria", "Exultación"]], ["Taurie Cain", ["Separación Limpia", "Invocación: Cuervos Traicioneros", "Carga Sobre los Hombros"]], ["Orela Rose", ["No Hacer Daño", "Deber de Socorro", "Respuesta Rápida"]], ["Rick Grimes", ["Ingenio Apocalíptico", "¡Ven A Por Mí!", "Trabajo en Equipo: Curtirse"]], ["Michonne Grimes", ["Convicción", "Última Defensa", "Trabajo en Equipo: Al Derribo"]], ["Vee Boonyasak", ["Vida en la Carretera", "¡Uno-Dos-Tres-Cuatro!", "Notas Fantasmales"]], ["Dustin Henderson", ["Bada, Bada, Bum", "Cambio de Planes", "Trabajo en Equipo: Circuito Completo"]], ["Once", ["Percepción Extrasensorial", "Te Vemos", "Trabajo en Equipo: Tono Suave"]], ["Kwon Tae-young", ["Estado de Flujo", "Un Lugar Para Nosotros", "Cinco Pasos Por Delante"]], ["Shane Wiigwaas", ["Acelerador a Fondo", "Echar una Mano", "Contrainterrogatorio"]], ["Aurora Stardotter", ["Fruto de tu Esfuerzo", "Grito de Salvación", "Bendición: Decisión"]]];
 
     const survivorFilterBtn = document.getElementById("survivorFilterButton");
     const survivorFilterPanel = document.getElementById("survivorFilterPanel");
@@ -4082,17 +4082,12 @@ const survivorFilters = [["Dwight Fairfield", ["Vínculo", "Demuestra lo que Val
         return found ? found[1].filter(p => perkNames.includes(p)) : [];
     }
 
-    const universalSurvivorPerks = new Set(["Carne Resbaladiza", "Caza Menor", "De Pies Ligeros", "Déjà Vu", "Escalofríos", "Esperanza", "Esto No Puede Estar Pasando", "Familia", "Instinto de Saqueador", "Nadie Se Queda Atrás", "Percepción Oscura", "Premonición", "Resiliencia", "Sobreviviremos"]);
+    // La lista de perks del usuario es la fuente de verdad para esta ruleta.
+    // Cada perk aparece una sola vez aunque pertenezca a más de un superviviente.
+    const universalSurvivorPerks = new Set();
+    const generalizedLicensedPerks = new Set();
 
-    // These are the generalized versions that remain available independently
-    // of the original licensed character being selected.
-    const generalizedLicensedPerks = new Set([
-        "Ganas de Vivir",
-        "Hasta Terminar con el Último",
-        "Ligado por Obsesión"
-    ]);
-
-    const perkFilterStorageKey = "elboyo19_perk_filter_v3";
+    const perkFilterStorageKey = "elboyo19_perk_filter_v4";
     let manualDisabledPerks = new Set();
 
     try{
@@ -4106,12 +4101,7 @@ const survivorFilters = [["Dwight Fairfield", ["Vínculo", "Demuestra lo que Val
                 .filter(([name]) => selectedSurvivors.has(name))
                 .flatMap(([name]) => survivorPerks(name))
         );
-
-        return perkNames.filter(perk =>
-            universalSurvivorPerks.has(perk) ||
-            generalizedLicensedPerks.has(perk) ||
-            selected.has(perk)
-        );
+        return perkNames.filter(perk => selected.has(perk));
     }
 
     function applySurvivorFilter(){
@@ -4831,6 +4821,79 @@ document.addEventListener('elboyo19:perkFilterChanged', function(e){
   window.elboyo19PerkFilter=e.detail.perks;
 });
 </script>
+
+
+<style id="elboyo19-branding">
+#elboyo19-socials{
+    position:fixed;
+    right:18px;
+    bottom:58px;
+    z-index:1200;
+    width:185px;
+    padding:12px 13px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:12px;
+    background:linear-gradient(145deg,rgba(8,8,8,.94),rgba(55,0,0,.94));
+    box-shadow:0 12px 35px rgba(0,0,0,.65),0 0 18px rgba(130,0,0,.25);
+    backdrop-filter:blur(8px);
+}
+#elboyo19-socials .social-title{
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    color:rgba(255,255,255,.58);
+    margin-bottom:7px;
+    text-transform:uppercase;
+}
+#elboyo19-socials a{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:5px 6px;
+    border-radius:6px;
+    color:#fff;
+    text-decoration:none;
+    font-size:11px;
+    font-weight:800;
+    transition:background .15s,transform .15s;
+}
+#elboyo19-socials a:hover{
+    background:rgba(255,255,255,.08);
+    transform:translateX(-2px);
+}
+#elboyo19-footer{
+    width:100%;
+    padding:13px 18px 15px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.08);
+    background:rgba(0,0,0,.75);
+    color:rgba(255,255,255,.48);
+    font-size:10px;
+    letter-spacing:.5px;
+}
+@media(max-width:700px){
+    #elboyo19-socials{
+        right:10px;
+        bottom:55px;
+        width:160px;
+        padding:9px 10px;
+    }
+    #elboyo19-socials a{font-size:10px;padding:4px}
+    #elboyo19-footer{font-size:9px;padding-bottom:12px}
+}
+</style>
+
+<div id="elboyo19-socials" aria-label="Redes sociales de ELBOYO19">
+    <div class="social-title">📡 MIS REDES</div>
+    <a href="https://www.youtube.com/@ElBoyo19" target="_blank" rel="noopener noreferrer">▶️ YouTube: ElBoyo19</a>
+    <a href="https://www.twitch.tv/boyoplay" target="_blank" rel="noopener noreferrer">🟣 Twitch: boyoplay</a>
+    <a href="https://kick.com/ElBoyo19" target="_blank" rel="noopener noreferrer">🟢 Kick: ElBoyo19</a>
+    <a href="https://www.tiktok.com/@ElBoyo19" target="_blank" rel="noopener noreferrer">🎵 TikTok: ElBoyo19</a>
+</div>
+
+<footer id="elboyo19-footer">
+    Fan-made project. Not affiliated with or endorsed by Behaviour Interactive.
+</footer>
 
 </body>
 </html>
